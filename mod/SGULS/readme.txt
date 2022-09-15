@@ -1,3 +1,7 @@
+Antes de empezar es importante notar que la linea de comando:
+
+lo que hace es conectarse al generador de señales en donde 
+
 Las funcione a usar son:
 configGS()
   Esta funcion por defecto configura el generador de señales con signal="pulse", frecuencia=24000 ,high level voltaje = 0.5 , low level voltaje= -0.5 
