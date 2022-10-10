@@ -19,24 +19,24 @@ def HV_R(command):
 		
 
 
-def HV_CH0(vset=1700, iset=400 , rup=30 , rdown=50 , trip= 2  ,imonrange="high", powerdown="kill"):
-	HV_W("$CMD:SET,CH:0,PAR:VSET,VAL:	%.2f" % vset)
-	HV_W("$CMD:SET,CH:0,PAR:ISET,VAL:	%.2f" % iset)
-	HV_W("$CMD:SET,CH:0,PAR:RUP,VAL: 	%.2f" % rup)
-	HV_W("$CMD:SET,CH:0,PAR:RDW,VAL:	%.2f" %rdown)
-	HV_W("$CMD:SET,CH:0,PAR:TRIP,VAL:	%.2f" %trip)
+def HV_CH0(CH=0, vset=1700, iset=400 , rup=30 , rdown=50 , trip= 2  ,imonrange="high", powerdown="kill"):
+	HV_W("$CMD:SET,CH:%f,PAR:VSET,VAL:	%.2f" % (CH, vset))
+	HV_W("$CMD:SET,CH:%f,PAR:ISET,VAL:	%.2f" % (CH, iset))
+	HV_W("$CMD:SET,CH:%f,PAR:RUP,VAL: 	%.2f" % (CH, rup))
+	HV_W("$CMD:SET,CH:%f,PAR:RDW,VAL:	%.2f" % (CH, rdown))
+	HV_W("$CMD:SET,CH:%f,PAR:TRIP,VAL:	%.2f" % (CH, trip))
 	
 	if imonrange=="high":
-		HV_W("$CMD:SET,CH:0,PAR:IMRANGE,VAL:HIGH")
+		HV_W("$CMD:SET,CH:%f,PAR:IMRANGE,VAL:HIGH" % CH)
 	elif imonrange=="low":
-		HV_W("$CMD:SET,CH:0,PAR:IMRANGE,VAL:LOW")
+		HV_W("$CMD:SET,CH:%f,PAR:IMRANGE,VAL:LOW"  % CH)
 	else:
 		print("No se cambio IMON range")
 	
 	if powerdown=="kill":
-		HV_W("$CMD:SET,CH:0,PAR:PDWN,VAL:KILL")
+		HV_W("$CMD:SET,CH:%f,PAR:PDWN,VAL:KILL" % CH)
 	elif powerdown=="ramp":
-		HV_W("$CMD:SET,CH:0,PAR:PDWN,VAL:RAMP ")
+		HV_W("$CMD:SET,CH:%f,PAR:PDWN,VAL:RAMP" % CH)
 	else:
 		print("No se cambio Power down")
 		
