@@ -34,3 +34,62 @@ HV_OFF_ALL() apaga todos los canales
  
  
 Los posibles parametros a monitorear son:
+ 
+
+VSET    |VSET value
+VSRES   |Resolution of VSET in Volt
+VSDEC   |Decimal digits of VSET
+VMAX    |Max value of VSET
+VMIN    |Min value of VSET
+VMON    |VMON value
+VMRES   |VMON resolution
+VMDEC   |Decimal digits of VMON
+ISET    |ISET value
+ISRES   |Resolution of ISET in μA
+IMAXH   |Max value of ISET in high range
+IMAXL   |Max value of ISET in low range
+IMIN    |Min value of ISET
+ISDEC   |Decimal digits of ISET
+IMON    |IMON value
+IMRANGE |IMON range (high /low)
+IMRESL  |IMON resolution in low range
+IMRESH  |IMON resolution in high range
+IMDECL  |Decimal digits of IMON in low range
+IMDECH  |Decimal digits of IMON in high range
+MAXV    |VMAX value
+MVMIN   |VMAX minimum value
+MVMAX   |VMAX maximum value
+MVRES   |VMAX resolution
+MVDEC   |Decimal digits of VMAX
+PDWN    |Power down mode Ramp / Kill
+POL     |Polarit
+RUP RAMP|UP value
+RUPMIN  |RAMP UP minimum value
+RUPMAX  |RAMP UP maximum value
+RUPRES  |RAMP UP resolutionRUPDEC Decimal digits of RAMP UP
+RDW RAMP|DOWN value
+RDWMIN  |RAMP DOWN minimum value
+RDWMAX  |RAMP DOWN maximum value
+RDWRES  |RAMP DOWN resolution
+RDWDEC  |Decimal digits of RAMP DOWN
+TRIP    |Trip value
+TRIPMIN |Trip minimum value
+TRIPMAX Trip maximum value
+TRIPRES Trip resolution
+TRIPDEC Decimal digits of Trip
+ZCDTC Status of ZC Detect; ON = offset current is getting stored; OFF = ready to store offset current
+ZCADJ Status of ZC Adjust (EN/DIS)
+STAT |Status
+     |IS_ON     |1      |Channel On
+     |IS_UP     |2      |Channel Ramping Up
+     |IS_DOWN   |4      |Channel Ramping Down
+     |IS_OVC    |8      |Channel in Overcurrent
+     |IS_OVV    |0x10   |Channel in OverVoltage
+     |IS_UNV    |0x20   |Channel in UnderVoltage
+     |IS_MAXV   |0x40   |Channel in MaxV
+     |IS_TRIP   |0x80   |Channel in Trip
+     |IS_MAXPW  |0x100  |Channel in MaxPower
+     |IS_TWARN  |0x200  |Channel in Temperature warning (>80°C)
+     |IS_OVT    |0x400  |Channel in OVT (>125°C)
+     |IS_KILL   |0x800  |Channel Killed
+     |IS_INTLCK |0x1000 |Channel in Interlock
