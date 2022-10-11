@@ -4,5 +4,5 @@ si queremos programar el generador de señales y este ya tenia configurada la fu
 configGS(frec=28000) para dejar la frecuencia en 28khz sera como si usted hubiera escrito la funcion:
 configGS(signal="pulse", frec=24000 ,vhl= 0.5 ,vll= -0.5 ,width= 20  ,impedance=50, duty="NULL")
 
-En general cuando se documento como usar las funciones se usaron los valores que esta traen por defecto.
+En general cuando se documento como usar las funciones se usaron los valores que estas traen por defecto.
 
