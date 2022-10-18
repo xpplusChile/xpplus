@@ -84,8 +84,8 @@ def get_data(channel=1,numero_tri="NULL",run_time="NULL",sampling=5e9,mode="on",
 			if 'time' not in load_data.keys():
 				load_data['time'] = t
 			load_data[f'CH{chidx}'] = v
-		#temp3=temp2*10-temp1
-		#i=(math.trunc(temp3))/10
+		temp3=temp2*10-temp1
+		i=(math.trunc(temp3))/10
 
 		if s==1:
 			for t0, v0 in zip(t,load_data[f'CH{1}']):
