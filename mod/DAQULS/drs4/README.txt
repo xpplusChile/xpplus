@@ -5,4 +5,6 @@ info() sirve para ver si se logro la coneccion don el dispositivo y tambien entr
  
 load_waveform(CH=1,sampling=5e9,mode="on", rang=0, trig_source="ch1", trig_level=-.1,trig_pol="falling",trig_delay=150e-9) obtiene la informacion de una sola onda, CH= define
 el canal del cual se obtiene la onda, sampling= es el sampling frecuency, mode= "on" o mode="off" activa o desactiva el transparent mode, el trig_source= es para definir 
-con que canal se usa el trigger(tiene que estar en minusculas el ch1,ch2,ch3 o ch4), trig_level= indica el el punto de trigger y esta en volts, trig_pol=
+con que canal se usa el trigger(tiene que estar en minusculas el ch1,ch2,ch3 o ch4), trig_level= indica el el punto de trigger y esta en volts, trig_pol=  pone la polaridad del trigger en modo "falling" edge o "rising" edge, trig_delay= es el tiempo de delay en segundos.Esta funcion se queda detenida hasta obtener un trigger que cumpla las condiciones dadas y retorna el tiempo(t) y el voltaje(v).
+
+get_data(channel=1,numero_tri="NULL",run_time="NULL",sampling=5e9,mode="on", rang=0, trig_source="CH1", trig_level=-0.1,trig_pol="falling",trig_delay=150e-9) los valores distintos a los vistos con load_waveform() son numero_tri= que define el numero de triggers que quieres obtener y run_time= que define por cuanto tiempo en segundos quieres obtener triggers y guardar datos, esta funcion devuelve un archivo root.
