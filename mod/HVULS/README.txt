@@ -20,7 +20,7 @@ HV_Conf(CH=0, vset=1700, iset=400 , rup=30 , rdown=50 , trip= 2  ,imonrange="hig
  se  denomina 0, vset indica cual sera el voltaje onjetivo a llegar, iset es la corriente maxima que puede indicar el dispositivo antes de trippear, 
  rup indica la velocidad con la que sube el voltaje para llegar al vset, rdown indica la velocidad con que baja el voltaje para llegar al vset o llegar
  a un valor cercano a 0 una vez se decide apagar el canal en cuestion, trip indica cuanto tiempo puede estar el dispositivo por sobre la corriente 
- antes de trippear
+ seteada antes de trippear
 
 
 get_HV_par(CH=0, par = "NULL") 
