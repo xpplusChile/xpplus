@@ -15,4 +15,16 @@ LV_R(command)
   Manda un comando de lectura y devuelve la respuesta del dispositivo.
 
 LV_Conf(CH=1, volt=0, curr=0, curr_prot="NULL", volt_prot="NULL"):
-  Hace una configuracion siCH= define el canal a configurar
+  Hace una configuracion simple en donde CH= define el canal a configurar, volt= define el voltaje de salida, curr= la corriente de salida, curr_prot=
+  define el valor de la proteccion de corriente y volt_prot= el valor de la proteccion de voltaje.
+
+LV_ON(CH=1)
+  CH= prende el canal al que es igual este valor.
+  
+LV_OFF(CH=1)
+  CH= apaga el canal al que es igual este valor.
+  
+LV_ON_ALL()
+  Prende todos los canales.
+LV_OFF_ALL()
+  APAGA todos los canales.
