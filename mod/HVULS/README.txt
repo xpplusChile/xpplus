@@ -9,28 +9,41 @@ Otro detalle a mencionar es que DT_READ es el tiempo de descanso despues de cada
 
 Ahora con las funciones:
 
-HV_W(command)  se pone el comando que se quiere mandar a la maquina dentro del parentecis y esta lo ejecuta
+HV_W(command)  
+ se pone el comando que se quiere mandar a la maquina dentro del parentecis y esta lo ejecuta
  
-HV_R(command)  se pone el comando que se quiere mandar a la maquina dentro del parentesis y te devuelve el valor preguntado
+HV_R(command)  
+ se pone el comando que se quiere mandar a la maquina dentro del parentesis y te devuelve el valor preguntado
  
-HV_Conf(CH=0, vset=1700, iset=400 , rup=30 , rdown=50 , trip= 2  ,imonrange="high", powerdown="kill") configura un solo canal de la fuente de alto voltaje, CH indica el canal el cual se va a configurar, muy importante tener en cuenta que el primer canal se denomina 0, vset indica cual sera el voltaje onjetivo a llegar, iset es la corriente maxima que puede indicar el dispositivo antes de trippear, rup indica la velocidad con la que sube el voltaje para llegar al vset, rdown indica la velocidad con que baja el voltaje para llegar al vset o llegar a un valor cercano a 0 una vez se decide apagar el canal en cuestion, trip indica cuanto tiempo puede estar el dispositivo por sobre la corriente antes de trippear
+HV_Conf(CH=0, vset=1700, iset=400 , rup=30 , rdown=50 , trip= 2  ,imonrange="high", powerdown="kill") 
+ configura un solo canal de la fuente de alto voltaje, CH indica el canal el cual se va a configurar, muy importante tener en cuenta que el primer canal 
+ se  denomina 0, vset indica cual sera el voltaje onjetivo a llegar, iset es la corriente maxima que puede indicar el dispositivo antes de trippear, 
+ rup indica la velocidad con la que sube el voltaje para llegar al vset, rdown indica la velocidad con que baja el voltaje para llegar al vset o llegar
+ a un valor cercano a 0 una vez se decide apagar el canal en cuestion, trip indica cuanto tiempo puede estar el dispositivo por sobre la corriente 
+ antes de trippear
 
 
-get_HV_par(CH=0, par = "NULL") se ingresa el parametro que se desea monitoriar en par="" y tambien el canal que se desea monitoriar con CH=
-                               Este monitoreo solo es instantaneo
+get_HV_par(CH=0, par = "NULL") 
+ se ingresa el parametro que se desea monitoriar en par="" y tambien el canal que se desea monitoriar con CH=
+ Este monitoreo solo es instantaneo
                                
 
 
-HV_mon(CH=0, seg=DT_READ, par = "NULL") hace lo mismo que la funcion anterior solo que por un tiempo determinado, este tiempo se ingresa con seg=
+HV_mon(CH=0, seg=DT_READ, par = "NULL") 
+ hace lo mismo que la funcion anterior solo que por un tiempo determinado, este tiempo se ingresa con seg=
 
 
-HV_ON(CH=0) se usa para prender un unico canal indicado con CH=
+HV_ON(CH=0) 
+ se usa para prender un unico canal indicado con CH=
 
-HV_OFF(CH=0) se usa para apagatr un unico canal indicado con CH=
+HV_OFF(CH=0) 
+ se usa para apagatr un unico canal indicado con CH=
 
-HV_ON_ALL() prende todos los canales
+HV_ON_ALL() 
+ prende todos los canales
 
-HV_OFF_ALL() apaga todos los canales
+HV_OFF_ALL() 
+ apaga todos los canales
  
  
 Los posibles parametros a monitorear son:
