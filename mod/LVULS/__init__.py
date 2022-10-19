@@ -17,7 +17,8 @@ def LV_R(command):
 	return res
 
 
-def LV_Conf(CH=1, volt=4, curr=2, curr_prot="NULL", volt_prot="NULL"):
+def LV_Conf(CH=1, volt=0, curr=0, curr_prot="NULL", volt_prot="NULL"):
+	LV_W(":OUTP CH%i,OFF" % CH)
 	LV_W(":INST CH%i" 	% CH)
 	LV_W(":CURR %.2f" 	% curr)
 	LV_W(":VOLT %.2f"	% volt)
@@ -49,9 +50,7 @@ def LV_OFF_ALL():
 	LV_W(":OUTP CH1,OFF")
 	LV_W(":OUTP CH2,OFF")
 	LV_W(":OUTP CH3,OFF")
-
-
-
-
-
+	
+	
+	
 
