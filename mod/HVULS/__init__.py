@@ -1,12 +1,12 @@
 import pyvisa as visa
 import time
 
-DT_READ = 0.4 #s
+DT_READ = 0.2 #s
 DT_WRITE = 0.2 #s
 
 rm = visa.ResourceManager()
 inst=rm.open_resource("ASRL/dev/ttyACM0::INSTR")
-time.sleep(3)
+time.sleep(1)
 
 def HV_W(command):
 	inst.write(command)
@@ -19,7 +19,7 @@ def HV_R(command):
 		
 
 
-def HV_Conf(CH=0, vset=1700, iset=400 , rup=30 , rdown=50 , trip= 2  ,imonrange="high", powerdown="kill"):
+def HV_Conf(CH=0, vset=0, iset=0 , rup=30 , rdown=50 , trip= 2  ,imonrange="high", powerdown="kill"):
 	HV_W("$CMD:SET,CH:%f,PAR:VSET,VAL:	%.2f" % (CH, vset))
 	HV_W("$CMD:SET,CH:%f,PAR:ISET,VAL:	%.2f" % (CH, iset))
 	HV_W("$CMD:SET,CH:%f,PAR:RUP,VAL: 	%.2f" % (CH, rup))
@@ -78,5 +78,4 @@ def HV_OFF_ALL():
 	HV_W("$CMD:SET,CH:1,PAR:OFF")
 	HV_W("$CMD:SET,CH:2,PAR:OFF")
 	HV_W("$CMD:SET,CH:3,PAR:OFF")
-
 
