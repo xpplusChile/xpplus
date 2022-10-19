@@ -5,10 +5,13 @@ g_s =  usbtmc.Instrument(0x400 , 0x09c4)
 lo que hace es conectarse al generador de señales en donde 0x400 corresponde a idvendor y 0x9c4 corresponde a idproduct
 
 Las funcione a usar son:
+
 configGS_CH1(signal="pulse", frec=24000 ,vhl= 0.5 ,vll= -0.5 ,width="NULL"  ,impedance=50, duty="NULL")
-  Esta funcion por defecto configura el generador de señales con signal="pulse", frecuencia=24000 ,high level voltaje = 0.5 , low level voltaje= -0.5 
-  ,width= 20 ,impedance=50, para configuarlo de otra forma se puede hacer por ejemplo signal="pulse", frec=50000 ,vhl=0 ,vll= -0.8 ,impedance=100, duty=80 
-  El witdh esta en unidad de medida ns,el duty es un porcentaje,los voltajes estan en vpp y solo configura el canal 1.
+  Esta funcion configura los parametros del generador de señales teniendo mas opciones integradas para la señal de tipo pulso, signal= define el tipo 
+  de señal, frec= setea la frecuencia, vhl es para setear el high level voltage, vll es para el low level voltaje, width= es para definir el ancho 
+  de la señal con valor minimo ingresable de 20 para frecuencias mayores a 24000 (los valores ingresados quedan en ns), impedance= es para fijar la 
+  impedancia y duty= es para definir el duty de la onda (es un porcentaje)
+  Importante tener en cuenta que si se ingresan valores para width y duty al mismo tiempo estos no son compatibles y se usara el duty.
 
 configGS_CH2(signal="pulse", frec=24000 ,vhl= 0.5 ,vll= -0.5 ,width="NULL"  ,impedance=50, duty="NULL")
   Hace lo mismo que la funcion anterior pero para el canal 2.
