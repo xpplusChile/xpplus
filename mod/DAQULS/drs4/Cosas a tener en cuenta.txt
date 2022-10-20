@@ -30,26 +30,10 @@ def get_waveform_all(self) -> dict:
 			'Time (s)': np.array(self.board.get_time_buffer(n_channel-1))*1e-9,
 		}
 ---------------------------------------------------------------------------------------------------------------------------------------------------
-En donde se toman los cuatros canales del drs4 al mismo tiempo pero me da desconfianza que en verdad no sea al mismo tiempo debido al tiempo inherente 
-que puede haber entre comandos en la seccion return{ }
+En donde se toman los cuatros canales del drs4 al mismo tiempo y esto es asi puesto que una vez se invoca la funcion transfer_waves(self, firstChannel: int, lastChannel: int) (la cual esta en la biblioteca pydrs) los cuatro canales del drs4 son guardados en la memoria del pc y la linea de comandos 'Amplitude_1 (V)': np.array(self.board.get_waveform_buffer(1-1))*1e-3, lo unico que hace es guardarlos dentro de una variable con la cual python puede trabajar
   
-Por otro lado se intento usar la funcion 
----------------------------------------------------------------------------------------------------------------------------------------------------
-def transfer(self,first=1,last=3):
-		n_channel=1
-		ct.check_is_instance(n_channel,'n_channel',int)
-		if n_channel not in {1,2,3,4}:
-			raise ValueError(f'`n_channel` must be one of 1,2,3 or 4, received {repr(n_channel)}.')
-		self.board.get_time(0,n_channel-1,self.board.get_trigger_cell()) # Not sure what this does, but it was in `drs_exam.cpp`.
-		s=self.board.transfer_waves(0,1)
-		return s 
-		
----------------------------------------------------------------------------------------------------------------------------------------------------
+  
 
-En donde se uso la funcion "transfer_waves(self, firstChannel: int, lastChannel: int)" la cual se supone llama directamente la funcion 
-"DRSBoard::TransferWaves(unsigned char *p, int firstChannel, int lastChannel)" que segun el comentario dentro de esta hace "Transfer all 
-waveforms at once from VME or USB to location" dando a entender que entrega la informacion de los cuatro canales del drs4 pero esto solo 
-me entrego un numero entero y tambien es importante mencionar que esta ::funcion transferwaves es usada para detener el funcionamiento del
-drs4 hasta que reciba una señal de un trigger.
-  Las funciones usadas por el wrapper original(osea sin este par de funciones agregadas a la biblioteca) estan en "https://github.com/SengerM/pydrs"
-  y siendo importante mencionar que en /pydrs/pydrs/cpp y en /pydrs/pydrs/cpp/include estan todas las funciones que usa el drs4 para funcionar.
+
+Las funciones usadas por el wrapper original(osea sin esta funciones agregadas a la biblioteca) estan en "https://github.com/SengerM/pydrs"
+y siendo importante mencionar que en /pydrs/pydrs/cpp y en /pydrs/pydrs/cpp/include estan todas las funciones que usa el drs4 para funcionar.
