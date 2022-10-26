@@ -9,7 +9,12 @@ conf_waveform(sampling=5e9,mode="on", rang=0, trig_source="ch1", trig_level=-.1,
  punto de trigger y esta en  volts, trig_pol=  pone la polaridad del trigger en modo "falling" edge  o "rising" edge, trig_delay= es el tiempo 
  de delay en segundos.
 
-wait_trigger():
+wait_trigger()
+ No permite que el programa siga corriendo hasta obtener una señal de trigger que cumpla las condicines entregadas en conf_waveform()
+
+load_waveform(CH=1, wait_trig="OFF")
+ retorna los valores de tiempo(t) y el voltaje(v) del canal CH=, wait_trigg= es para definir si se espera o no una señal de trigger ("ON" u "OFF") 
+
 
 load_waveform_all(sampling=5e9,mode="on", rang=0, trig_source="ch1", trig_level=-.1,trig_pol="falling",trig_delay=150e-9)
  Hace lo mismo que la funcion anterior pero para todos los canales al mismo tiempo
