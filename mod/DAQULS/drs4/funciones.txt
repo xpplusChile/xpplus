@@ -67,47 +67,47 @@ def get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL"):
 		
 		board.wait_trigger()
 
-		#while temp4 temp5 # poner menor
+		#while temp4 <temp5 # poner menor
 		
-		board.transfer()
-				#hacer tab a todo
+			board.transfer()
+					#hacer tab a todo
 
-		for chidx in chlist:
-			t, v = load_waveforms(CH=chidx)
-			if 'time' not in load_data.keys():
-				load_data['time'] = t
-			load_data[f'CH{chidx}'] = v
+			for chidx in chlist:
+				t, v = load_waveforms(CH=chidx)
+				if 'time' not in load_data.keys():
+					load_data['time'] = t
+				load_data[f'CH{chidx}'] = v
 
 
-		if s==1:
-			for t0, v0 in zip(t,load_data[f'CH{1}']):
-				#print(t0)
-				tupla.Fill(i,t0,v0)
-		elif s==2:
-			for t0, v0,v1 in zip(t,load_data[f'CH{1}'],load_data[f'CH{2}']):
-				tupla.Fill(i,t0,v0,v1)
-		elif s==3:
-			for t0, v0,v1,v2 in zip(t,load_data[f'CH{1}'],load_data[f'CH{2}'],load_data[f'CH{3}']):
-				tupla.Fill(i,t0,v0,v1,v2)
-		else :
-			for t0, v0,v1,v2,v3 in zip(t,load_data[f'CH{1}'],load_data[f'CH{2}'],load_data[f'CH{3}'],load_data[f'CH{4}']):
-				tupla.Fill(i,t0,v0,v1,v2)
-	
-	
-		
-		if numero_tri != "NULL":
-			temp2=temp2+1
-		
-		elif run_time != "NULL":
-			temp2=time.time()
-		else:
-			temp2=temp2+1
-		i=temp2
+			if s==1:
+				for t0, v0 in zip(t,load_data[f'CH{1}']):
+					#print(t0)
+					tupla.Fill(i,t0,v0)
+			elif s==2:
+				for t0, v0,v1 in zip(t,load_data[f'CH{1}'],load_data[f'CH{2}']):
+					tupla.Fill(i,t0,v0,v1)
+			elif s==3:
+				for t0, v0,v1,v2 in zip(t,load_data[f'CH{1}'],load_data[f'CH{2}'],load_data[f'CH{3}']):
+					tupla.Fill(i,t0,v0,v1,v2)
+			else :
+				for t0, v0,v1,v2,v3 in zip(t,load_data[f'CH{1}'],load_data[f'CH{2}'],load_data[f'CH{3}'],load_data[f'CH{4}']):
+					tupla.Fill(i,t0,v0,v1,v2)
 
-		if trigger_time != "NULL":
-			temp4= time.time()
-		else:
-			temp4=2		
+
+
+			if numero_tri != "NULL":
+				temp2=temp2+1
+
+			elif run_time != "NULL":
+				temp2=time.time()
+			else:
+				temp2=temp2+1
+			i=temp2
+
+			if trigger_time != "NULL":
+				temp4= time.time()
+			else:
+				temp4=2		
 
 	fout.Write("",TObject.kOverwrite)
 	fout.Close()
