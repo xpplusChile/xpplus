@@ -26,6 +26,9 @@ get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL")
  el valor deseado a trigger_time=
  Es muy importante mencionar que el ultimo paremetro mencionado tiene la capicidad de pasarse del tiempo dado en run_time=, por ejemplo si ponemos 
  run_time=20 , trigger_time=20 y recibe una señal de trigger al segundo 18 el drs4 seguira tomando datos hasta el segundo 28.
- Un deta
+ Un detalle curioso es que cuando probe que esta funcion funcionara bien y grafice los datos en root sin hacer ningun tipo de filtro y habiendo
+ apagado los canales mientras tomaba datos(para ver que en efecto esperaba el trigger), al graficar el canal que tomaba como trigger este no 
+ presentaba una linea central de ruido(de cuando el canal estaba sin recibir señal) pero el canal que no se uso como trigger si presentaba esta
+ linea central evidenciando que tomo datos mientras este estaba apagado.
  
 
