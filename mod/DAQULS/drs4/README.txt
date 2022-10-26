@@ -1,5 +1,8 @@
 Hay que tener en cuenta que si se fuerza el termino del script ya sea cerrando la consola de comandos o de otra forma hay que desconectar 
 y reconectar el DRS4 ya que el computador pierde la capacidad de conectarse con el DRS4.
+Otro detalle importante es que cada vez que el dispositivo va a recibir una señal de trigger se le da un time.sleep(0.0001) porque de lo contrario
+sucedia que el dispositivo tomaba señales (ruido) y las devolvia sin esperar a la señal de trigger y por ende si queremos tomar datos a la mayor
+velocidad de medicion posible se recomienda solo esperar el trigger de forma inicial.
 
 info() sirve para ver si se logro la coneccion don el dispositivo y tambien entrega informacion basica sobre este.
 
@@ -22,6 +25,7 @@ get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL")
  finalmenet el ultimo parametro que se puede ingresar es el tiempo por el cual se quiere medir sin considerar trigger luego de recibirlo, se le asigna
  el valor deseado a trigger_time=
  Es muy importante mencionar que el ultimo paremetro mencionado tiene la capicidad de pasarse del tiempo dado en run_time=, por ejemplo si ponemos 
- run_time=20 , trigger_time=20 y recibe una señal de trigger al segundo 18 el drs4 seguira tomando datos hasta el segundo 28
+ run_time=20 , trigger_time=20 y recibe una señal de trigger al segundo 18 el drs4 seguira tomando datos hasta el segundo 28.
+ Un deta
  
 
