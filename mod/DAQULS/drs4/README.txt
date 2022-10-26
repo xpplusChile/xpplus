@@ -17,10 +17,10 @@ load_waveform(CH=1, wait_trig="OFF")
 
 get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL")
  channel= es lo que define los canales cuya informacion sera guardada en un archivo externo .root y el formato de este parametro tiene que ser de la 
- forma "1" ; "1,2" ; "1,2,3" o "1,2,3,4",
- Los valores distintos a los vistos con load_waveform() son channel= el cual puede ser por ejemplo "1,2" ,numero_tri= que define el numero de triggers
- que quieres obtener y run_time= que define por cuanto tiempo en segundos quieres obtener triggers y guardar datos, esta funcion devuelve un archivo 
- root en el cual se guarda el evento evn(la informacion de este parametro es el tiempo en que se tomo la medicion o el numero de trigger asociado al 
- evento y esto depende de cual es el parametro que define el fin de la funcion), el tiempo y el voltaje asociado a los canales.
- Si se dice trig_source=="NULL" no esperara una señal de trigger
+ forma "1" ; "1,2" ; "1,2,3" o "1,2,3,4", si queremos que los datos sean guardados en funcion del numero de señales de trigger asignamos este valor 
+ en numero_tri=, por otro lado si queremos guardar datos en funcion de un tiempo de toma de datos asignamos el valor deseado en segundos a run_time=,
+ finalmenet el ultimo parametro que se puede ingresar es el tiempo por el cual se quiere medir sin considerar trigger luego de recibirlo, se le asigna
+ el valor deseado a trigger_time=
+ Es mu
+ 
 
