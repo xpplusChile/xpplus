@@ -4,10 +4,12 @@ y reconectar el DRS4 ya que el computador pierde la capacidad de conectarse con 
 info() sirve para ver si se logro la coneccion don el dispositivo y tambien entrega informacion basica sobre este.
 
 conf_waveform(sampling=5e9,mode="on", rang=0, trig_source="ch1", trig_level=-.1,trig_pol="falling",trig_delay=150e-9)
- Configura la obtencion de datos del DRS4,sampling= es el sampling frecuency, mode= "on" o 
- mode="off" activa o desactiva el transparent mode, el trig_source= es para definir con que canal se usa el trigger(tiene que estar en minusculas 
- el ch1,ch2,ch3 o ch4), trig_level= indica el el punto de trigger y esta en  volts, trig_pol=  pone la polaridad del trigger en modo "falling" edge 
- o "rising" edge, trig_delay= es el tiempo de delay en segundos.
+ Configura la obtencion de datos del DRS4,sampling= es el sampling frecuency, mode= "on" o mode="off" activa o desactiva el transparent mode, 
+ el trig_source= es para definir con que canal se usa el trigger(tiene que estar en minusculas el ch1,ch2,ch3 o ch4), trig_level= indica el 
+ punto de trigger y esta en  volts, trig_pol=  pone la polaridad del trigger en modo "falling" edge  o "rising" edge, trig_delay= es el tiempo 
+ de delay en segundos.
+
+wait_trigger():
 
 load_waveform_all(sampling=5e9,mode="on", rang=0, trig_source="ch1", trig_level=-.1,trig_pol="falling",trig_delay=150e-9)
  Hace lo mismo que la funcion anterior pero para todos los canales al mismo tiempo
