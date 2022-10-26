@@ -15,20 +15,12 @@ wait_trigger()
 load_waveform(CH=1, wait_trig="OFF")
  retorna los valores de tiempo(t) y el voltaje(v) del canal CH=, wait_trigg= es para definir si se espera o no una señal de trigger ("ON" u "OFF") 
 
-
-load_waveform_all(sampling=5e9,mode="on", rang=0, trig_source="ch1", trig_level=-.1,trig_pol="falling",trig_delay=150e-9)
- Hace lo mismo que la funcion anterior pero para todos los canales al mismo tiempo
-
-get_data(channel="1",numero_tri="NULL",run_time="NULL",sampling=5e9,mode="on", rang=0, trig_source="CH1", trig_level= 0.1,trig_pol="falling", trig_delay=150e-9) 
+get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL")
+ channel= es lo que define los canales cuya informacion sera guardada en un archivo externo .root y el formato de este parametro tiene que ser de la 
+ forma "1" ; "1,2" ; "1,2,3" o "1,2,3,4",
  Los valores distintos a los vistos con load_waveform() son channel= el cual puede ser por ejemplo "1,2" ,numero_tri= que define el numero de triggers
  que quieres obtener y run_time= que define por cuanto tiempo en segundos quieres obtener triggers y guardar datos, esta funcion devuelve un archivo 
  root en el cual se guarda el evento evn(la informacion de este parametro es el tiempo en que se tomo la medicion o el numero de trigger asociado al 
  evento y esto depende de cual es el parametro que define el fin de la funcion), el tiempo y el voltaje asociado a los canales.
  Si se dice trig_source=="NULL" no esperara una señal de trigger
 
-get_data_all(numero_tri="NULL",run_time="NULL",sampling=5e9,mode="on", rang=0, trig_source="CH1", trig_level= 0.1,trig_pol="falling", trig_delay=150e-9) 
- Hace lo mismo que la funcion anterior pero para todos los canales al mismo tiempo
-
-Esta funcion se queda detenida hasta obtener un trigger que cumpla las condiciones 
- dadas y retorna el tiempo(t) y el voltaje(v).
- Si se dice trig_source=="NULL" no esperara una señal de trigger
