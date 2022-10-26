@@ -21,6 +21,7 @@ get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL")
  en numero_tri=, por otro lado si queremos guardar datos en funcion de un tiempo de toma de datos asignamos el valor deseado en segundos a run_time=,
  finalmenet el ultimo parametro que se puede ingresar es el tiempo por el cual se quiere medir sin considerar trigger luego de recibirlo, se le asigna
  el valor deseado a trigger_time=
- Es mu
+ Es muy importante mencionar que el ultimo paremetro mencionado tiene la capicidad de pasarse del tiempo dado en run_time=, por ejemplo si ponemos 
+ run_time=20 , trigger_time=20 y recibe una señal de trigger al segundo 18 el drs4 seguira tomando datos hasta el segundo 28
  
 
