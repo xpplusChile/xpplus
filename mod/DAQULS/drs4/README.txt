@@ -1,4 +1,5 @@
-Hay que tener en cuenta que si se fuerza el termino del script ya sea cerrando la consola de comandos o de otra forma hay que desconectar y reconectar el DRS4 ya que el computador pierde la capacidad de conectarse con el DRS4.
+Hay que tener en cuenta que si se fuerza el termino del script ya sea cerrando la consola de comandos o de otra forma hay que desconectar 
+y reconectar el DRS4 ya que el computador pierde la capacidad de conectarse con el DRS4.
 
 info() sirve para ver si se logro la coneccion don el dispositivo y tambien entrega informacion basica sobre este.
  
