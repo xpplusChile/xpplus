@@ -10,9 +10,10 @@ En donde la informacion actual de los canales del DRS4 es mandada al computador 
 get_waveform(n_channel=), es importante mencionar que la informacion que esta midiendo el DRS4 puede ser totalmente distinta a la que se encuentra
 en el computador si pasa el tiempo sin volver a usar este comando ya que los datos no se actualizan hasta que se usa nuevamente.
 
-  
-
 
 Las funciones usadas por el wrapper original(osea sin esta funcion agregadas a la biblioteca) estan en "https://github.com/SengerM/pydrs"
 y siendo importante mencionar que en /pydrs/pydrs/cpp y en /pydrs/pydrs/cpp/include estan todas las funciones que usa el drs4 para funcionar
 y pueden agregarse al wrapper de ser necesario.
+
+Otro cambio a la libreria origial es que le quite los comentarios a las funciones que se usan en loop para medir datos ya que estos provocan que
+el programa corra un poco mas lento lo cual considere que seria mejor evitar.
