@@ -29,6 +29,7 @@ get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL")
  Un detalle curioso es que cuando probe que esta funcion funcionara bien y grafice los datos en root sin hacer ningun tipo de filtro y habiendo
  apagado los canales mientras tomaba datos(para ver que en efecto esperaba el trigger), al graficar el canal que tomaba como trigger este no 
  presentaba una linea central de ruido(de cuando el canal estaba sin recibir señal) pero el canal que no se uso como trigger si presentaba esta
- linea central evidenciando que tomo datos mientras este estaba apagado.
+ linea central evidenciando que tomo datos mientras este estaba apagado y tambien haciendo mas pruebas queda claro que mientras no se cumpla la 
+ condicion dada para el trigger el dispositivo no tomara datos.
  
 
