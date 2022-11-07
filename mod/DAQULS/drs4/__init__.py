@@ -50,6 +50,9 @@ def load_waveform(CH=1, wait_trig="OFF"):
 
 
 def get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL"):
+	temp0=time.time()
+	temp2=time.time()
+	
 	chlist=[int(x) for x in channel.split(",")]
 	#print(chlist)
 	s=len(chlist)
@@ -61,11 +64,15 @@ def get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL"):
 	
 	fout=TFile("datafile.root","recreate")
 	
-
-	tupla=TNtuple("drs4data","drs4 data","evn:t:v0:v1:v2:v3" )
-	
-	temp0=time.time()
-	temp2=time.time()
+	if s==1:
+		tupla=TNtuple("drs4data","drs4 data","evn:evn_time:t:v0" )
+	elif s==2:
+		tupla=TNtuple("drs4data","drs4 data","evn:evn_time:t:v0:v1" )
+	elif s==3:
+		tupla=TNtuple("drs4data","drs4 data","evn:evn_time:t:v0:v1:v2" )
+	else :
+		tupla=TNtuple("drs4data","drs4 data","evn:evn_time:t:v0:v1:v2:v3" )
+		
 	
 	if numero_tri != "NULL":
 		temp1=numero_tri
@@ -76,7 +83,8 @@ def get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL"):
 	else:
 		temp2=1
 		temp1=temp2
-		
+	
+	ii=0
 	while temp2<=temp1:
 		
 			
@@ -120,20 +128,19 @@ def get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL"):
 					tupla.Fill(i,t0,v0)
 			elif s==2:
 				for t0, v0,v1 in zip(t,load_data[f'CH{1}'],load_data[f'CH{2}']):
-					tupla.Fill(i,t0,v0,v1)
+					tupla.Fill(ii,i,t0,v0,v1)
 			elif s==3:
 				for t0, v0,v1,v2 in zip(t,load_data[f'CH{1}'],load_data[f'CH{2}'],load_data[f'CH{3}']):
-					tupla.Fill(i,t0,v0,v1,v2)
+					tupla.Fill(ii,i,t0,v0,v1,v2)
 			else :
 				for t0, v0,v1,v2,v3 in zip(t,load_data[f'CH{1}'],load_data[f'CH{2}'],load_data[f'CH{3}'],load_data[f'CH{4}']):
-					tupla.Fill(i,t0,v0,v1,v2)
+					tupla.Fill(ii,i,t0,v0,v1,v2)
 
-
+			ii=ii+1
 			if trigger_time!="NULL":
 				temp4=time.time()
 			else:
 				temp4=2
-
 			
 	fout.Write("",TObject.kOverwrite)
 	fout.Close()
