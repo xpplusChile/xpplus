@@ -2,7 +2,7 @@ import pyvisa as visa
 import time
 from ROOT import TNtuple,TFile,TObject,TH1D
 
-ip_direction = "TCPIP::10.3.84.12::INSTR"
+ip_direction = "TCPIP::10.3.84.21::INSTR"
 inst = visa.ResourceManager().open_resource(ip_direction)
 print(inst.query('*IDN?').strip())
 
@@ -33,26 +33,26 @@ def load_waveform(chidx, points_request):
     #print(f'loading CH{chidx} {points}pts')
     data_bin = inst.query_binary_values('WAV:DATA?', datatype='B', container=bytes)
     t = [(float(i) - xref)*xinc + xorg for i in range(points)]
-    v = [(float(byte_data) - yref)*yinc  for byte_data in data_bin]
+    v = [(float(byte_data) - yref)*yinc for byte_data in data_bin]
     #print("{0} {1} {2}".format(yinc, yorg, yref) )
     
     return t,v
     
     
-def get_data(channel="1" ,numero_tri=1, point_number=100000):
+def get_data(channel="1" ,numero_tri=1, point_number=100000, fname="datafile.root"):
 
 	chlist=[int(x) for x in channel.split(",")]
 	#print(chlist)
 	s=len(chlist)
 	#print(s)
 
-	inst.write(':Run')
-	time.sleep(1)
+	#inst.write(':Run')
+	#time.sleep(1)
 		
 	inst.query('*OPC?')
 	load_data = {}
 	
-	fout=TFile("datafile.root","recreate")
+	fout=TFile(fname,"recreate")
 	
 	if s==1:
 		tupla=TNtuple("oscdata","osciloscope data","evn:t:v0" )
@@ -81,7 +81,7 @@ def get_data(channel="1" ,numero_tri=1, point_number=100000):
 	
 	while temp2<=temp1:
 	
-		inst.write(':STOP')
+		inst.write(':SINGLE')
 		time.sleep(0.2)
 		for chidx in chlist:
 			t, v = load_waveform(chidx,point_number)
@@ -108,8 +108,8 @@ def get_data(channel="1" ,numero_tri=1, point_number=100000):
 		else :
 			for t0, v0,v1,v2,v3 in zip(t,load_data[f'CH{1}'],load_data[f'CH{2}'],load_data[f'CH{3}'],load_data[f'CH{4}']):
 				tupla.Fill(i,t0,v0,v1,v2)
-		inst.write(':Run')
-		time.sleep(0.2)
+		#inst.write(':Run')
+		#time.sleep(0.2)
 			
 		if numero_tri != "NULL":
 			temp2=temp2+1
@@ -118,6 +118,8 @@ def get_data(channel="1" ,numero_tri=1, point_number=100000):
 			temp2=time.time()
 		else:
 			temp2=temp2+1
+					
+		i+=1
 			
 	fout.Write("",TObject.kOverwrite)
 	fout.Close()
