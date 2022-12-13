@@ -1,0 +1,10 @@
+Al ingresar "df -h" en la consola de la red pitaya se encuentra que la memoria en la cual se guardan los datos tiene un maximo de 3.7G, una vez
+eliminados todos los datos tomados de la memoria usando nuvamente "df -h" la memoria ocupada es de 845M y se nos indica que la memoria disponible
+es de 2.7G a pesar de que con una calculadore podemos ver que la memoria disponible es de 2.87G
+
+Mirando el nombre de los archivos se puede ver que la creacion de un nuevo archivo de datos es cada una hora pero hasta el momento esto es falso, 
+es menos de una hora y la hora indicada de cuando se creo el archivo es distinta a la del reloj interno, en un inicio es 3 horas mayor y no cuenta 
+el minuto y tambien a medida que se crean mas archivos parace que se va dessincronizando mas pero reduciendose la hora indicada en el archivo, esto 
+aun no esta del todo confirmado aun
+
+Cada archivo de "1 hora" tomado por la noche pesaba 709k
