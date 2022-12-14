@@ -1,13 +1,16 @@
 import os
 from time import sleep
 
+num=4 #numero de archivos necesarios antes de que empiece a subirlos a la red pitaya
 source="/home/src/datos"
 files = sorted(os.listdir(source))
+size=len(files)
 password="xxxx"
 user="xxxx"
-size=len(files)
-while 1==1:
-	if size>4:
+while True:
+	files = sorted(os.listdir(source))
+	size=len(files)
+	if size>num:
 		for x in range(size-1):
 			f=files[x]
 			if (f.endswith(".dat")):
