@@ -18,3 +18,6 @@ ningun dispositivo conectado a la red pitaya
 Importante mencionar que antes de cerrar la consola hay que ingresar el comando "disown -ah" porque de lo contrario una vez cerrada la consola los 
 procesos asociados a esta no continuaran, en estos procesos se incluyen la toma de datos y la rutina para subir los datos al servidor y luego
 eliminarlos de pitaya.
+
+
+Actualmente el pid del proceso de toma de datos es 11791 y el pid de pitaya.py es 16187
