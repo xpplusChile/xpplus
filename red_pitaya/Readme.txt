@@ -1,3 +1,5 @@
+Para conectarse a la red pitaya es necesario estar conectado a la misma red, actualmente es por Lan, cuando este sea el caso se hace "sudo nmap -sP 10.3.84.1-254" y se revisa los resultados, el que nos interesa es la IP asociada a "instrumentation technologies", luego de esto se hace ssh con usuario root y con la ip obtenida, por ejemplo "ssh root@10.3.84.14" y se ingresa la contraseña.
+
 Al ingresar "df -h" en la consola de la red pitaya se encuentra que la memoria en la cual se guardan los datos tiene un maximo de 3.7G, una vez
 eliminados todos los datos tomados de la memoria usando nuvamente "df -h" la memoria ocupada es de 845M y se nos indica que la memoria disponible
 es de 2.7G a pesar de que con una calculadore podemos ver que la memoria disponible es de 2.87G
