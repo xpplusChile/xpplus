@@ -13,13 +13,10 @@ Cada archivo de "1 hora" tomado por la noche pesaba 709k
 
 Luego de probar de verificar de forma mas atenta la generacion de archivos se aprecia que se genera un archivo cada dos horas (sin que estuviera corriendo
 pitaya.py) y aun asi se segun la forma en que estos fueron nombrados dice que solo paso una hora entre la creacion de cada archivo, importante recalcar 
-que aparenta ser exactamente dos horas luego de ser ingresado el comando para tomar datos, personalmente pienso que puede ser debido a que en todo 
-momento habian dos consolas conectadas a la red pitaya, actualmente se encuentra tomando datos de forma autonoma sin ninguna consola de comandos ni 
-ningun dispositivo conectado a la red pitaya
+que aparenta ser exactamente dos horas luego de ser ingresado el comando para tomar datos.
 
 Importante mencionar que antes de cerrar la consola hay que ingresar el comando "disown -ah" porque de lo contrario una vez cerrada la consola los 
 procesos asociados a esta no continuaran, en estos procesos se incluyen la toma de datos y la rutina para subir los datos al servidor y luego
 eliminarlos de pitaya.
 
 
-Actualmente el pid del proceso de toma de datos es 11791 y el pid de pitaya.py es 16187
