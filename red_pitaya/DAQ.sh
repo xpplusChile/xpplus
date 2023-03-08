@@ -9,6 +9,7 @@ if [ -z "$process_id" ]
 #echo $trigger
 then
 	echo "\$var is empty"
+	#timeout 1h /home/src/lago -f /home/src/datos/trigger$((trigger))
 	timeout 1h /home/src/lago -f /home/src/datos/	
 else
     echo "\$var is NOT empty"
