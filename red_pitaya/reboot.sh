@@ -25,19 +25,19 @@ hv1_f=300
 hv1_a=$((hv1_i))
 rest=3
 
-#/home/src/lago -s hv1 ${hv1_a}
+/home/src/lago -s hv1 ${hv1_a}
 sleep $rest
 
 while [ $hv1_a -ge $((hv1_f+1)) ] 
 do 
 	hv1_a=$((hv1_a-200))
 	echo $hv1_a	
-	#/home/src/lago -s hv1 ${hv1_a}
+	/home/src/lago -s hv1 ${hv1_a}
 	sleep $rest
 done
 hv1_a=0
 echo $hv1_a
-#/home/src/lago -s hv1 ${hv1_a}
+/home/src/lago -s hv1 ${hv1_a}
 sleep $rest
 
 echo "Reiniciando" 
