@@ -4,19 +4,21 @@ Al ingresar "df -h" en la consola de la red pitaya se encuentra que la memoria e
 eliminados todos los datos tomados de la memoria usando nuvamente "df -h" la memoria ocupada es de 845M y se nos indica que la memoria disponible
 es de 2.7G a pesar de que con una calculadore podemos ver que la memoria disponible es de 2.87G
 
-Mirando el nombre de los archivos se puede ver que la creacion de un nuevo archivo de datos es cada una hora pero hasta el momento esto es falso, 
-es menos de una hora y la hora indicada de cuando se creo el archivo es distinta a la del reloj interno, en un inicio es 3 horas mayor y no cuenta 
-el minuto y tambien a medida que se crean mas archivos parace que se va dessincronizando mas pero reduciendose la hora indicada en el archivo, esto 
-aun no esta del todo confirmado aun
+Se hicieron varios scrips en bash para automatizar varios procesos de la red pitaya a traves de cron, estos son:
 
-Cada archivo de "1 hora" tomado por la noche pesaba 709k
+startup.sh : este scrip lo que haces es dejar configurado el sistema al momento que se prende (gracias a cron) e inicia automaticamente la toma de 
+datos, se calcula el tiempo que falta para el minuto 1 de la hora que sigue de tal forma que no se solape la toma de datos con la iniciada por DAQ.sh
 
-Luego de probar de verificar de forma mas atenta la generacion de archivos se aprecia que se genera un archivo cada dos horas (sin que estuviera corriendo
-pitaya.py) y aun asi se segun la forma en que estos fueron nombrados dice que solo paso una hora entre la creacion de cada archivo, importante recalcar 
-que aparenta ser exactamente dos horas luego de ser ingresado el comando para tomar datos.
+DAQ.sh     : este scrip al minuto 1 de cada hora inicia (gracias a cron) una toma de datos con timeout de 1h para evitar el problema que se presentaba
+anteriormente en el cual la hora de los datos indicada por el nombre del archivo era incorrecta
 
-Importante mencionar que antes de cerrar la consola hay que ingresar el comando "disown -ah" porque de lo contrario una vez cerrada la consola los 
-procesos asociados a esta no continuaran, en estos procesos se incluyen la toma de datos y la rutina para subir los datos al servidor y luego
-eliminarlos de pitaya.
+create_log.sh: este scrip guarda informacion de la red pitaya cada minuto un un archivo por nombre log_dia_mes_año.txt , la informacion contenida 
+por cada minuto corresponde a si la red pitaya se encuentra conectada a internet, la configuracion de esta y los procesos que estan corriendo 
+relacionados con la toma de datos
 
+reboot.sh: este scrip hace una secuencia de bajada para el alto voltaje entregado por ambos canales y procede a reiniciar la red pitaya
 
+turnoff.sh: este scrip hace una secuencia de bajada para el alto voltaje entregado por ambos canales y procede a apagar la red pitaya
+
+menu.sh : permite cambiar la configuracion que se hace cada vez que se prende la red pitaya de forma interactiva y por ende hay que reiniciar la
+red pitaya para que estos cambios sean efectivos
