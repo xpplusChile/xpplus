@@ -1,5 +1,8 @@
 #!/bin/sh
 
+/home/src/lago -s t1 500
+sleep 1
+
 var=$(/home/src/lago -a)
 #echo $var
 
@@ -41,5 +44,54 @@ echo $hv1_a
 sleep $rest
 
 echo "apagando"
+
+#####################################################################################################
+## LOG apagar
+
+date_=$(date '+%d_%m_%Y')
+hour=$(date '+%H')
+day=$(date '+%d')
+minute=$(date '+%M')
+log=$(dmesg -T)
+
+printf "\n_________________________________________________________" >> /home/src/logs/log_apagado_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_apagado_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_apagado_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_apagado_$date_.txt
+
+printf "\n$hour:$minute\n" >> /home/src/logs/log_apagado_$date_.txt
+printf "\n SE APAGO LA RED PITAYA" >> /home/src/logs/log_apagado_$date_.txt
+printf "$log" >> /home/src/logs/log_apagado_$date_.txt
+
+printf "\n_________________________________________________________" >> /home/src/logs/log_apagado_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_apagado_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_apagado_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_apagado_$date_.txt
+
+#####################################################################################################
+
+#####################################################################################################
+## LOG
+
+date_=$(date '+%d_%m_%Y')
+hour=$(date '+%H')
+day=$(date '+%d')
+minute=$(date '+%M')
+
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+
+printf "\n$hour:$minute\n" >> /home/src/logs/log_$date_.txt
+printf "\n SE APAGO LA RED PITAYA" >> /home/src/logs/log_$date_.txt
+
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+
+#####################################################################################################
+## Reiniciar
 
 poweroff

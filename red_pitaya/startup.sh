@@ -1,4 +1,29 @@
 #!/bin/sh
+
+#####################################################################################################
+## LOG
+
+date_=$(date '+%d_%m_%Y')
+hour=$(date '+%H')
+day=$(date '+%d')
+minute=$(date '+%M')
+
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+
+printf "\n$hour:$minute\n" >> /home/src/logs/log_$date_.txt
+printf "\n SE ENCENDIO LA RED PITAYA" >> /home/src/logs/log_$date_.txt
+
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+printf "\n_________________________________________________________" >> /home/src/logs/log_$date_.txt
+
+#####################################################################################################
+## startup
+
 sleep 10
 touch MASTER
 sleep 1
