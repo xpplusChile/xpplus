@@ -58,13 +58,14 @@ done
 #######################################################################
 #check memory
 
-printf "\n\nEl estado de la memoria usada por la adquisicion de datos es: \n" >> /home/src/logs/log_$date_.txt
+printf "\n\nEl estado de la memoria usada por la adquisicion de datos es: \n" >$
 
-grep= "$(dev/root)"
+grep="dev/root"
 log=$(df -h | grep "$grep")
 #dmesg -T | grep "$grep"
-printf "Filesystem      Size  Used Avail Use% Mounted on \n" >> /home/src/logs/log_$date_.txt
-printf "$log" >> /home/src/logs/log_$date_.txt
+printf "Filesystem      Size  Used Avail Use%% \n" >> /home/src/logs/log_$date_.txt
+#printf "\n" >> /home/src/logs/log_$date_.txt
+echo "$log" >> /home/src/logs/log_$date_.txt
 
 ########################################################################
 #Check dmesg
