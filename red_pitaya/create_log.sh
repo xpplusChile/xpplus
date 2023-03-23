@@ -55,6 +55,16 @@ do
         printf "\n$command" >> /home/src/logs/log_$date_.txt
         #echo $numbers
 done
+#######################################################################
+#check memory
+
+printf "\n\nEl estado de la memoria usada por la adquisicion de datos es: \n" >> /home/src/logs/log_$date_.txt
+
+grep= "$(dev/root)"
+log=$(df -h | grep "$grep")
+#dmesg -T | grep "$grep"
+printf "Filesystem      Size  Used Avail Use% Mounted on \n" >> /home/src/logs/log_$date_.txt
+printf "$log" >> /home/src/logs/log_$date_.txt
 
 ########################################################################
 #Check dmesg
