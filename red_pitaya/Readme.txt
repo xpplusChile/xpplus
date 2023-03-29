@@ -6,8 +6,13 @@ es de 2.7G a pesar de que con una calculadore podemos ver que la memoria disponi
 
 Se hicieron varios scrips en bash para automatizar varios procesos de la red pitaya a traves de cron, estos son:
 
+pitaya.py: este crip revisa la cantidad de archivos en la carpeta en la cual se guardan los datos adquiridos y si la cantidad es mayor a la estipulada 
+dentro del script (4 por defecto) todos los archivos exceptuando el ultimo (al que se le esta agregando datos actualmente) son enviados al servidor de 
+lago y luego borrarlos.
+
 startup.sh : este scrip lo que haces es dejar configurado el sistema al momento que se prende (gracias a cron) e inicia automaticamente la toma de 
-datos, se calcula el tiempo que falta para el minuto 1 de la hora que sigue de tal forma que no se solape la toma de datos con la iniciada por DAQ.sh
+datos, en caso de que la adquisicion de datos se considere inestable se calcula el tiempo que falta para el minuto 1 de la hora que sigue de tal
+forma que no se solape la toma de datos con la iniciada por DAQ.sh
 
 DAQ.sh     : este scrip al minuto 1 de cada hora inicia (gracias a cron) una toma de datos con timeout de 1h para evitar el problema que se presentaba
 anteriormente en el cual la hora de los datos indicada por el nombre del archivo era incorrecta
