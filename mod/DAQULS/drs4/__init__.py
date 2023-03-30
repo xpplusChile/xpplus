@@ -19,7 +19,7 @@ def conf_waveform(sampling=5e9,mode="on", rang=0, trig_source="ch1", trig_level=
 	board.set_sampling_frequency(Hz=sampling)
 	board.set_transparent_mode(mode)
 	board.set_input_range(center=rang)
-	board.enable_trigger(True,False) # Don't know what this line does, it was in the example `drs_exam.cpp`.
+	board.enable_trigger(True,False) 
 	board.set_trigger_source(trig_source)
 	board.set_trigger_level(volts=trig_level)
 	board.set_trigger_polarity(edge=trig_pol)
@@ -33,9 +33,9 @@ def load_waveform(CH=1, wait_trig="OFF"):
 	
 	elif wait_trig == "ON": 
 		time.sleep(0.0001)
-		print('Waiting for trigger...')
+		#print('Waiting for trigger...')
 		board.wait_for_single_trigger()
-		print("signail obtained")
+		#print("signail obtained")
 	else:
 		print("variable wait_trig erronea")
 	waveform_data = board.get_waveform(n_channel=CH)
@@ -49,7 +49,7 @@ def load_waveform(CH=1, wait_trig="OFF"):
 
 
 
-def get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL"):
+def get_data(channel="1",numero_tri="NULL",wait_trig="OFF",run_time="NULL",trigger_time="NULL",fname="datafile.root"):
 	temp0=time.time()
 	temp2=time.time()
 	
@@ -62,7 +62,7 @@ def get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL"):
 	load_data = {}
 	
 	
-	fout=TFile("datafile.root","recreate")
+	fout=TFile(fname,"recreate")
 	
 	if s==1:
 		tupla=TNtuple("drs4data","drs4 data","evn:evn_time:t:v0" )
@@ -88,9 +88,9 @@ def get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL"):
 	while temp2<=temp1:
 		
 			
-		print('Waiting for trigger...')
+		#print('Waiting for trigger...')
 		board.wait_for_single_trigger()
-		print("signail obtained")
+		#print("signail obtained")
 		
 		if trigger_time!="NULL":
 			temp4=time.time()
@@ -116,7 +116,7 @@ def get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL"):
 				
 				
 			for chidx in chlist:
-				t, v = load_waveform(CH=chidx)
+				t, v = load_waveform(CH=chidx,wait_trig=wait_trig)
 				if 'time' not in load_data.keys():
 					load_data['time'] = t
 				load_data[f'CH{chidx}'] = v
@@ -141,6 +141,7 @@ def get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL"):
 				temp4=time.time()
 			else:
 				temp4=2
+
 			
 	fout.Write("",TObject.kOverwrite)
 	fout.Close()
