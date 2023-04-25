@@ -1,12 +1,12 @@
 #!/bin/sh
 
-/home/src/lago -s t1 500
+/home/src/lago -s t1 9000
 sleep 1
 
 var=$(/home/src/lago -a)
 #echo $var
 
-prefix="#Trigger Level Ch1 = 500
+prefix="#Trigger Level Ch1 = 9000
 #Trigger Level Ch2 = 9000
 #High Voltage 1    = "
 foo=${var#"$prefix"}
