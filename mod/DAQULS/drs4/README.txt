@@ -18,6 +18,10 @@ wait_trigger()
 load_waveform(CH=1, wait_trig="OFF")
  retorna los valores de tiempo(t) y el voltaje(v) del canal CH=, wait_trigg= es para definir si se espera o no una señal de trigger ("ON" u "OFF").
 
+data_transfer(): Usa la funcion agregada a la libreria pydrs4 para que la informacion que sera recogida por load_waveform no espere trigger, este comando  o wait_for_trigger deeben ser usados siempre antes de load_waveform() porque hacen que la informacion del drs4 en el computador se actualice, si se usa load_waveform de forma repetida sin este comando las señales seran las mismas
+
+wait_for_trigger(): Renueva la informacion en el computador de los canales del drs4 "esperando" un trigger.
+
 get_data(channel="1",numero_tri="NULL",run_time="NULL",trigger_time="NULL",fname="datafile.root")
  channel= es lo que define los canales cuya informacion sera guardada en un archivo externo .root y el formato de este parametro tiene que ser de la 
  forma "1" ; "1,2" ; "1,2,3" o "1,2,3,4", si queremos que los datos sean guardados en funcion del numero de señales de trigger asignamos este valor 
