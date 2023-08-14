@@ -33,7 +33,6 @@ HV_mon(CH=0, seg=DT_READ, par = "NULL")
 HV_mon(CH=0, seg=DT_READ, par = "NULL") 
  Hace lo mismo que la funcion anterior solo que por un tiempo determinado, este tiempo se ingresa con seg=
 
-
 HV_ON(CH=0) 
  Se usa para prender un unico canal indicado con CH=
 
@@ -46,7 +45,12 @@ HV_ON_ALL()
 HV_OFF_ALL() 
  Apaga todos los canales
  
- 
+Por su repetido uso se agreagron las funciones:
+
+HV_imon_f(CH=0): hace un loop en donde intenta obtener el valor de la corriente hasta que retorne un string que se pueda pasar a un numero. 
+
+HV_vmon_f(CH=0): hace un loop en donde intenta obtener el valor del voltaje hasta que retorne un string que se pueda pasar a un numero. 
+
 Los posibles parametros a monitorear son:
  
 
