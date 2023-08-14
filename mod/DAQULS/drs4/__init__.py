@@ -45,10 +45,13 @@ def load_waveform(CH=1, wait_trig="OFF"):
 	v=waveform_data['Amplitude (V)']
 	
 	return t,v
+
+def data_transfer():
+	board.transfer()
 	
-
-
-
+def wait_for_trigger():
+	board.wait_for_single_trigger()
+		
 def get_data(channel="1",numero_tri="NULL",wait_trig="OFF",run_time="NULL",trigger_time="NULL",fname="datafile.root"):
 	temp0=time.time()
 	temp2=time.time()
