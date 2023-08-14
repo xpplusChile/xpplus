@@ -57,7 +57,33 @@ def HV_mon(CH=0, seg=DT_READ, par = "NULL"):
 			print(HV_R("$CMD:MON,CH:%f,PAR:%s" % (CH, par))) 
 			i=i+DT_READ
 
+def HV_imon_f(CH=0):
+	imon = hv.get_HV_par(CH=CH,par="IMON")
+	imon = imon.split(":")[-1].strip()
+	imon = imon.rstrip(imon[-1])
+	
+	while imon=="O":
+		imon = hv.get_HV_par(CH=CH,par="IMON")
 		
+		imon = imon.split(":")[-1].strip()
+		imon = imon.rstrip(imon[-1])
+
+	imon = float(imon)
+	return imon
+		
+def HV_vmon_f(CH=0):
+	vmon = hv.get_HV_par(CH=CH,par="VMON")
+	vmon = vmon.split(":")[-1].strip()
+	vmon = vmon.rstrip(vmon[-1])
+
+	while vmon =="O":
+		vmon = hv.get_HV_par(CH=CH,par="VMON")
+		
+		vmon = vmon.split(":")[-1].strip()
+		vmon = vmon.rstrip(vmon[-1])
+
+	vmon = float(vmon)
+	return vmon		
 		
 def HV_ON(CH=0):
 	HV_W("$CMD:SET,CH:%f,PAR:ON" % CH)
